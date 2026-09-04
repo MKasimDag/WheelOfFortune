@@ -748,7 +748,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wheelTransform: {fileID: 781556684}
-  _sliceCount: 8
+  _slicePrefab: {fileID: 3258659301701647295, guid: c0111c1128014c74b978b99b2417d4ac, type: 3}
+  _sliceContainer: {fileID: 781556684}
+  _sliceRadius: 240
   _spinDuration: 3
   _fullTurns: 5
 --- !u!114 &781556688
@@ -765,9 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wheelImage: {fileID: 781556685}
   _zoneData: {fileID: 11400000, guid: f8b9ad8ac88e69348b9c573abbf2af53, type: 2}
-  _normalSprite: {fileID: 21300000, guid: 96f6968079b4dcb4d86aa3549ba0ea21, type: 3}
-  _safeSprite: {fileID: 21300000, guid: bc316995b9dab3449b1c751d290e77fe, type: 3}
-  _superSprite: {fileID: 21300000, guid: 467d866a8d5327d419fa6ecc4ccc7308, type: 3}
+  _configSet: {fileID: 11400000, guid: 196260ca265e3b94a9e8c52a85da47d2, type: 2}
 --- !u!1 &903607440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,8 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wheelView: {fileID: 781556687}
   _zoneData: {fileID: 11400000, guid: f8b9ad8ac88e69348b9c573abbf2af53, type: 2}
-  _sliceCount: 8
-  _bombSliceIndex: 0
+  _configSet: {fileID: 11400000, guid: 196260ca265e3b94a9e8c52a85da47d2, type: 2}
 --- !u!4 &1770255427
 Transform:
   m_ObjectHideFlags: 0

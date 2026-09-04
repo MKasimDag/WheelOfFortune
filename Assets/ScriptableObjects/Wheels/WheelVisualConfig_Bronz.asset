@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7473802cb000f543a15cb745db94a44, type: 3}
+  m_Name: WheelVisualConfig_Bronz
+  m_EditorClassIdentifier: 
+  _wheelSprite: {fileID: 21300000, guid: 96f6968079b4dcb4d86aa3549ba0ea21, type: 3}
+  _rewardPool: {fileID: 11400000, guid: fc354b9f6efb07842a96b96c5d0c05b2, type: 2}
+  _includesBomb: 1
+  _bombSlice: {fileID: 11400000, guid: 4a4ec92c952f0e240869dbf2c10d90c9, type: 2}
+  _slotCount: 8

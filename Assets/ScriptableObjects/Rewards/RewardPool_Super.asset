@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8d9de7b90e7704abe0f50c0cb3a40a, type: 3}
+  m_Name: RewardPool_Super
+  m_EditorClassIdentifier: 
+  _rewards:
+  - {fileID: 11400000, guid: 71fa63eb7be3e3d4a95539215f29e335, type: 2}
+  - {fileID: 11400000, guid: aea1a6b85c9c9dc448e774c441fa923f, type: 2}
+  - {fileID: 11400000, guid: 51f67c1f4ca7f5041bf65847f692912e, type: 2}
+  - {fileID: 11400000, guid: b1f5ee2cffcb5ba418ea95d60bf1b06c, type: 2}
+  - {fileID: 11400000, guid: 647bb0d227ad7c340bbd36bcbf6eacbd, type: 2}
+  - {fileID: 11400000, guid: 3301acd1a12bcba488dfcd02c5e2481f, type: 2}
+  - {fileID: 11400000, guid: a1bc1956ad6d14d449ed6b3c629baadd, type: 2}
+  - {fileID: 11400000, guid: 6b5e938d02bb2fd40b00a4aefc5b70f4, type: 2}
+  - {fileID: 11400000, guid: f8a2875a0c3cf114f89da56e03ada684, type: 2}
+  - {fileID: 11400000, guid: ab8609bfadc5701488f232c042f44b66, type: 2}
+  - {fileID: 11400000, guid: 165b7e63a96bf33479847004ba13c472, type: 2}
+  - {fileID: 11400000, guid: 756e8a46321c0d34f8caabb74af502d2, type: 2}
