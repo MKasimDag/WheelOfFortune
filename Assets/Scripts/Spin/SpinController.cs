@@ -1,31 +1,35 @@
 using UnityEngine;
+using WheelOfFortune.Config;
 using WheelOfFortune.Events;
-using WheelOfFortune.Zone;
 
 namespace WheelOfFortune.Spin
 {
     public class SpinController : MonoBehaviour
     {
         [SerializeField] private WheelView _wheelView;
-        [SerializeField] private ZoneData _zoneData;
-        [SerializeField] private int _sliceCount = 8;
-        [SerializeField] private int _bombSliceIndex = 0;
+        [SerializeField] private Zone.ZoneData _zoneData;
+        [SerializeField] private WheelConfigSet _configSet;
 
         private ISliceSelector _selector;
+        private IWheelPopulator _populator;
 
         private void Awake()
         {
-            _selector = new WeightedSliceSelector(_sliceCount, _bombSliceIndex);
+            _selector = new WeightedSliceSelector();
+            _populator = new RandomWheelPopulator();
         }
 
         public void Spin()
         {
             if (_wheelView.IsSpinning) return;
 
-            bool includesBomb = _zoneData.CurrentZoneType == ZoneType.Normal;
-            var result = _selector.Select(includesBomb);
+            var config = _configSet.Get(_zoneData.CurrentZoneType);
+            var currentSlices = _populator.Populate(config);
 
-            _wheelView.SpinTo(result.SliceIndex, () => OnSpinComplete(result));
+            _wheelView.SetSlices(currentSlices);
+            var result = _selector.Select(currentSlices, _zoneData.CurrentZone);
+
+            _wheelView.SpinTo(result.SliceIndex, currentSlices.Count, () => OnSpinComplete(result));
         }
 
         private void OnSpinComplete(SpinResult result)

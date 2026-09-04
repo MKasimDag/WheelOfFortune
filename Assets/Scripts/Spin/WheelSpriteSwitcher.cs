@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using WheelOfFortune.Config;
 using WheelOfFortune.Events;
 using WheelOfFortune.Zone;
 
@@ -9,9 +10,7 @@ namespace WheelOfFortune.Spin
     {
         [SerializeField] private Image _wheelImage;
         [SerializeField] private ZoneData _zoneData;
-        [SerializeField] private Sprite _normalSprite;
-        [SerializeField] private Sprite _safeSprite;
-        [SerializeField] private Sprite _superSprite;
+        [SerializeField] private WheelConfigSet _configSet;
 
         private void OnEnable()
         {
@@ -28,12 +27,7 @@ namespace WheelOfFortune.Spin
 
         private void ApplySprite(ZoneType type)
         {
-            _wheelImage.sprite = type switch
-            {
-                ZoneType.Safe => _safeSprite,
-                ZoneType.Super => _superSprite,
-                _ => _normalSprite
-            };
+            _wheelImage.sprite = _configSet.Get(type).WheelSprite;
         }
     }
 }

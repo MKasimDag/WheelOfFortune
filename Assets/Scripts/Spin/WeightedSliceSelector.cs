@@ -1,28 +1,35 @@
+using System.Collections.Generic;
 using UnityEngine;
+using WheelOfFortune.Config;
 
 namespace WheelOfFortune.Spin
 {
     public class WeightedSliceSelector : ISliceSelector
     {
-        private readonly int _sliceCount;
-        private readonly int _bombSliceIndex;
-
-        public WeightedSliceSelector(int sliceCount, int bombSliceIndex)
+        public SpinResult Select(IReadOnlyList<SliceData> slices, int zone)
         {
-            _sliceCount = sliceCount;
-            _bombSliceIndex = bombSliceIndex;
-        }
+            float totalWeight = 0f;
+            for (int i = 0; i < slices.Count; i++)
+                totalWeight += slices[i].Weight;
 
-        public SpinResult Select(bool includesBomb)
-        {
-            int index;
-            do
+            float roll = Random.Range(0f, totalWeight);
+            float cumulative = 0f;
+            int selectedIndex = slices.Count - 1;
+
+            for (int i = 0; i < slices.Count; i++)
             {
-                index = Random.Range(0, _sliceCount);
-            } while (!includesBomb && index == _bombSliceIndex);
+                cumulative += slices[i].Weight;
+                if (roll <= cumulative)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
 
-            bool isBomb = includesBomb && index == _bombSliceIndex;
-            return new SpinResult(index, isBomb);
+            var slice = slices[selectedIndex];
+            int rewardAmount = slice is RewardSliceData reward ? reward.GetAmount(zone) : 0;
+
+            return new SpinResult(selectedIndex, slice.IsBomb, rewardAmount);
         }
     }
 }

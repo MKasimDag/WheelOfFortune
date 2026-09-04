@@ -3,8 +3,8 @@ using WheelOfFortune.Config;
 
 namespace WheelOfFortune.Spin
 {
-    public interface ISliceSelector
+    public interface IWheelPopulator
     {
-        SpinResult Select(IReadOnlyList<SliceData> slices, int zone);
+        List<SliceData> Populate(WheelVisualConfig config);
     }
 }
