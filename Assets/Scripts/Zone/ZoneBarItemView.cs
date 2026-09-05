@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace WheelOfFortune.Zone
 {
@@ -18,6 +17,12 @@ namespace WheelOfFortune.Zone
         {
             ui_text_zone_value.text = zoneNumber.ToString();
             ui_text_zone_value.color = textColor;
+            ui_text_zone_value.enabled = true;
+        }
+
+        public void SetEmpty()
+        {
+            ui_text_zone_value.enabled = false;
         }
     }
 }

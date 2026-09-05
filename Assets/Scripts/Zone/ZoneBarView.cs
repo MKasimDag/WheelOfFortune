@@ -9,13 +9,16 @@ namespace WheelOfFortune.Zone
         [SerializeField] private ZoneData _zoneData;
         [SerializeField] private ZoneBarItemView _itemPrefab;
         [SerializeField] private Transform _itemContainer;
-        [SerializeField] private int _visibleZoneCount = 7;
+        [SerializeField] private int _pastCount = 6;
+        [SerializeField] private int _futureCount = 6;
 
         [SerializeField] private Color _normalColor = Color.white;
         [SerializeField] private Color _safeColor = Color.cyan;
         [SerializeField] private Color _superColor = Color.yellow;
+        [SerializeField] private Color _pastColor = Color.gray;
 
         private readonly List<ZoneBarItemView> _spawnedItems = new();
+        private int TotalCount => _pastCount + 1 + _futureCount;
 
         private void OnEnable()
         {
@@ -30,23 +33,37 @@ namespace WheelOfFortune.Zone
 
         private void OnZoneChanged(ZoneChangedEvent e) => Refresh();
 
-        private Color GetColorFor(ZoneType type) => type switch
+        private Color GetColorFor(int zone, ZoneType type)
         {
-            ZoneType.Safe => _safeColor,
-            ZoneType.Super => _superColor,
-            _ => _normalColor
-        };
+            if (zone < _zoneData.CurrentZone) return _pastColor;
+            return type switch
+            {
+                ZoneType.Safe => _safeColor,
+                ZoneType.Super => _superColor,
+                _ => _normalColor
+            };
+        }
 
         private void Refresh()
         {
-            EnsureItemCount(_visibleZoneCount);
+            EnsureItemCount(TotalCount);
 
-            int startZone = _zoneData.CurrentZone;
-            for (int i = 0; i < _visibleZoneCount; i++)
+            int currentZone = _zoneData.CurrentZone;
+            int startZone = currentZone - _pastCount;
+
+            for (int i = 0; i < TotalCount; i++)
             {
                 int zone = startZone + i;
-                var type = i == 0 ? _zoneData.CurrentZoneType : _zoneData.CalculateZoneType(zone);
-                _spawnedItems[i].SetData(zone, GetColorFor(type));
+                var item = _spawnedItems[i];
+
+                if (zone < 1)
+                {
+                    item.SetEmpty();
+                    continue;
+                }
+
+                var type = zone == currentZone ? _zoneData.CurrentZoneType : _zoneData.CalculateZoneType(zone);
+                item.SetData(zone, GetColorFor(zone, type));
             }
         }
 
