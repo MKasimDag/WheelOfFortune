@@ -12,6 +12,7 @@ namespace WheelOfFortune.Spin
         [SerializeField] private SliceView _slicePrefab;
         [SerializeField] private Transform _sliceContainer;
         [SerializeField] private float _sliceRadius = 150f;
+        [SerializeField] private int _slotCount = 8;
         [SerializeField] private float _spinDuration = 3f;
         [SerializeField] private int _fullTurns = 5;
 
@@ -20,32 +21,43 @@ namespace WheelOfFortune.Spin
 
         public bool IsSpinning => _isSpinning;
 
-        public void SetSlices(List<SliceData> slices)
+        private void Awake()
         {
-            EnsureSliceCount(slices.Count);
-
-            float anglePerSlice = 360f / slices.Count;
-            for (int i = 0; i < slices.Count; i++)
-            {
-                float angleRad = i * anglePerSlice * Mathf.Deg2Rad;
-                var localPos = new Vector2(Mathf.Sin(angleRad), Mathf.Cos(angleRad)) * _sliceRadius;
-
-                _spawnedSlices[i].transform.localPosition = localPos;
-                _spawnedSlices[i].SetData(slices[i]);
-                _spawnedSlices[i].gameObject.SetActive(true);
-            }
-
-            for (int i = slices.Count; i < _spawnedSlices.Count; i++)
-                _spawnedSlices[i].gameObject.SetActive(false);
+            SpawnSlices();
         }
 
-        public void SpinTo(int targetSliceIndex, int sliceCount, Action onComplete)
+        private void SpawnSlices()
+        {
+            for (int i = 0; i < _slotCount; i++)
+            {
+                var slice = Instantiate(_slicePrefab, _sliceContainer);
+                var rotation = GetSliceRotation(i);
+
+                slice.transform.localPosition = rotation * Vector3.up * _sliceRadius;
+                slice.transform.localRotation = rotation;
+
+                _spawnedSlices.Add(slice);
+            }
+        }
+
+        public void SetSlices(List<SliceData> slices, int zone)
+        {
+            for (int i = 0; i < _spawnedSlices.Count; i++)
+            {
+                bool hasData = i < slices.Count;
+                _spawnedSlices[i].gameObject.SetActive(hasData);
+                if (hasData)
+                    _spawnedSlices[i].SetData(slices[i], zone);
+            }
+        }
+
+        public void SpinTo(int targetSliceIndex, Action onComplete)
         {
             if (_isSpinning) return;
             _isSpinning = true;
 
-            float anglePerSlice = 360f / sliceCount;
-            float targetAngle = (_fullTurns * 360f) + (targetSliceIndex * anglePerSlice);
+            float anglePerSlice = 360f / _slotCount;
+            float targetAngle = (_fullTurns * 360f) - (targetSliceIndex * anglePerSlice);
 
             _wheelTransform.DOLocalRotate(new Vector3(0, 0, -targetAngle), _spinDuration, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuart)
@@ -56,13 +68,29 @@ namespace WheelOfFortune.Spin
                 });
         }
 
-        private void EnsureSliceCount(int count)
+        private Quaternion GetSliceRotation(int index)
         {
-            while (_spawnedSlices.Count < count)
+            float angle = index * (360f / _slotCount);
+            return Quaternion.Euler(0, 0, -angle);
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (_wheelTransform == null) return;
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(_wheelTransform.position, 8f);
+
+            Gizmos.color = Color.cyan;
+            for (int i = 0; i < _slotCount; i++)
             {
-                var slice = Instantiate(_slicePrefab, _sliceContainer);
-                _spawnedSlices.Add(slice);
+                var rotation = GetSliceRotation(i);
+                Vector3 worldPos = _wheelTransform.TransformPoint(rotation * Vector3.up * _sliceRadius);
+                Gizmos.DrawSphere(worldPos, 6f);
+                Gizmos.DrawLine(_wheelTransform.position, worldPos);
             }
         }
+#endif
     }
 }

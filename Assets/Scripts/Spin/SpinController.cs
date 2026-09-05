@@ -1,17 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using WheelOfFortune.Config;
 using WheelOfFortune.Events;
+using WheelOfFortune.Zone;
 
 namespace WheelOfFortune.Spin
 {
     public class SpinController : MonoBehaviour
     {
         [SerializeField] private WheelView _wheelView;
-        [SerializeField] private Zone.ZoneData _zoneData;
+        [SerializeField] private ZoneData _zoneData;
         [SerializeField] private WheelConfigSet _configSet;
 
         private ISliceSelector _selector;
         private IWheelPopulator _populator;
+        private List<SliceData> _currentSlices;
 
         private void Awake()
         {
@@ -19,17 +22,39 @@ namespace WheelOfFortune.Spin
             _populator = new RandomWheelPopulator();
         }
 
+        private void OnEnable()
+        {
+            GameEventBus.Subscribe<ZoneChangedEvent>(OnZoneChanged);
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.Unsubscribe<ZoneChangedEvent>(OnZoneChanged);
+        }
+
+        private void Start()
+        {
+            PopulateWheel();
+        }
+
+        private void OnZoneChanged(ZoneChangedEvent e)
+        {
+            PopulateWheel();
+        }
+
+        private void PopulateWheel()
+        {
+            var config = _configSet.Get(_zoneData.CurrentZoneType);
+            _currentSlices = _populator.Populate(config);
+            _wheelView.SetSlices(_currentSlices, _zoneData.CurrentZone);
+        }
+
         public void Spin()
         {
             if (_wheelView.IsSpinning) return;
 
-            var config = _configSet.Get(_zoneData.CurrentZoneType);
-            var currentSlices = _populator.Populate(config);
-
-            _wheelView.SetSlices(currentSlices);
-            var result = _selector.Select(currentSlices, _zoneData.CurrentZone);
-
-            _wheelView.SpinTo(result.SliceIndex, currentSlices.Count, () => OnSpinComplete(result));
+            var result = _selector.Select(_currentSlices, _zoneData.CurrentZone);
+            _wheelView.SpinTo(result.SliceIndex, () => OnSpinComplete(result));
         }
 
         private void OnSpinComplete(SpinResult result)
