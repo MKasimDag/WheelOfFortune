@@ -27,9 +27,11 @@ namespace WheelOfFortune.Spin
             }
 
             var slice = slices[selectedIndex];
-            int rewardAmount = slice is RewardSliceData reward ? reward.GetAmount(zone) : 0;
+            int rewardAmount = slice is SliceRewardData reward ? reward.GetAmount(zone) : 0;
+            string rewardId = slice is SliceRewardData r ? r.Id : null;
+            Sprite rewardIcon = slice is SliceRewardData rs ? rs.Icon : null;
 
-            return new SpinResult(selectedIndex, slice.IsBomb, rewardAmount);
+            return new SpinResult(selectedIndex, slice.IsBomb, rewardId, rewardAmount, rewardIcon);
         }
     }
 }

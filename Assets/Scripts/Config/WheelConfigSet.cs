@@ -3,7 +3,7 @@ using WheelOfFortune.Zone;
 
 namespace WheelOfFortune.Config
 {
-    [CreateAssetMenu(menuName = "WheelOfFortune/WheelConfigSet")]
+    [CreateAssetMenu(menuName = "WheelOfFortune/Config/WheelConfigSet")]
     public class WheelConfigSet : ScriptableObject
     {
         [SerializeField] private WheelVisualConfig _normal;

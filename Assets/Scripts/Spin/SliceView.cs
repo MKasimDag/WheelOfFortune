@@ -22,7 +22,7 @@ namespace WheelOfFortune.Spin
         {
             ui_image_icon.sprite = slice.Icon;
 
-            if (slice is RewardSliceData reward)
+            if (slice is SliceRewardData reward)
             {
                 ui_text_amount_value.gameObject.SetActive(true);
                 ui_text_amount_value.text = reward.GetAmount(zone).ToString();

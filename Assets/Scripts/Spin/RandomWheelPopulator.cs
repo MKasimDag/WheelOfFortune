@@ -8,7 +8,7 @@ namespace WheelOfFortune.Spin
     {
         public List<SliceData> Populate(WheelVisualConfig config)
         {
-            var pool = new List<RewardSliceData>(config.RewardPool.Rewards);
+            var pool = new List<SliceRewardData>(config.RewardPool.Rewards);
             int rewardSlotCount = config.IncludesBomb ? config.SlotCount - 1 : config.SlotCount;
 
             var result = new List<SliceData>();

@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace WheelOfFortune.Config
 {
-    [CreateAssetMenu(menuName = "WheelOfFortune/Slice/Reward")]
-    public class RewardSliceData : SliceData
+    [CreateAssetMenu(menuName = "WheelOfFortune/Config/SliceReward")]
+    public class SliceRewardData : SliceData
     {
         [SerializeField] private int _baseAmount = 100;
         [SerializeField] private AnimationCurve _zoneScaling = AnimationCurve.Linear(1, 1, 30, 3);
+        public string Id => Icon.name;
 
         public override bool IsBomb => false;
 

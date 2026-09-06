@@ -46,7 +46,7 @@ namespace WheelOfFortune.Zone
         }
         private void OnDestroy()
         {
-            ResetProgress();
+            _zoneData.Reset();
         }
     }
 }

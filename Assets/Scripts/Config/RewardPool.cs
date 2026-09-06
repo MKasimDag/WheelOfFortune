@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace WheelOfFortune.Config
 {
-    [CreateAssetMenu(menuName = "WheelOfFortune/RewardPool")]
+    [CreateAssetMenu(menuName = "WheelOfFortune/Config/RewardPool")]
     public class RewardPool : ScriptableObject
     {
-        [SerializeField] private RewardSliceData[] _rewards;
-        public RewardSliceData[] Rewards => _rewards;
+        [SerializeField] private SliceRewardData[] _rewards;
+        public SliceRewardData[] Rewards => _rewards;
     }
 }

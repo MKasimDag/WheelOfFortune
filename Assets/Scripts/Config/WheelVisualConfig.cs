@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WheelOfFortune.Config
 {
-    [CreateAssetMenu(menuName = "WheelOfFortune/WheelVisualConfig")]
+    [CreateAssetMenu(menuName = "WheelOfFortune/Config/WheelVisualConfig")]
     public class WheelVisualConfig : ScriptableObject
     {
         [SerializeField] private Sprite _wheelSprite;
