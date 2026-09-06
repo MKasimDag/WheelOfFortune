@@ -53,13 +53,19 @@ namespace WheelOfFortune.Spin
         {
             if (_wheelView.IsSpinning) return;
 
+            GameEventBus.Publish(new SpinStartedEvent());
+
             var result = _selector.Select(_currentSlices, _zoneData.CurrentZone);
             _wheelView.SpinTo(result.SliceIndex, () => OnSpinComplete(result));
         }
 
         private void OnSpinComplete(SpinResult result)
         {
-            GameEventBus.Publish(new SpinCompletedEvent(result));
+            GameEventBus.Publish(new SpinResultEvent(result));
+            Debug.Log($"Spin bitti — IsBomb: {result.IsBomb}, RewardId: {result.RewardId}");
+
+            if (!result.IsBomb)
+                GameEventBus.Publish(new RewardWonEvent(result.RewardId, result.RewardAmount, result.RewardIcon));
         }
     }
 }

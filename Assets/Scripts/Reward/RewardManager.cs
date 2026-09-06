@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using WheelOfFortune.Events;
 using WheelOfFortune.Spin;
@@ -10,42 +11,41 @@ namespace WheelOfFortune.Reward
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<SpinCompletedEvent>(OnSpinCompleted);
+            GameEventBus.Subscribe<RewardWonEvent>(OnRewardWon);
+            GameEventBus.Subscribe<RestartConfirmedEvent>(OnRestartConfirmed);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<SpinCompletedEvent>(OnSpinCompleted);
+            GameEventBus.Unsubscribe<RewardWonEvent>(OnRewardWon);
+            GameEventBus.Unsubscribe<RestartConfirmedEvent>(OnRestartConfirmed);
         }
 
-        private void OnSpinCompleted(SpinCompletedEvent e)
-        {
-            if (e.Result.IsBomb)
-                ResetProgress();
-            else
-                Add(e.Result.RewardId, e.Result.RewardAmount, e.Result.RewardIcon);
-        }
+        private void OnRewardWon(RewardWonEvent e) => Add(e.RewardId, e.Amount, e.Icon);
+        private void OnRestartConfirmed(RestartConfirmedEvent e) => ResetProgress();
 
         public void Add(string id, int amount, Sprite icon)
         {
             _rewardData.Add(id, amount, icon);
-            Publish();
+            GameEventBus.Publish(new RewardChangedEvent());
         }
 
         public void ResetProgress()
         {
             _rewardData.Reset();
-            Publish();
+            GameEventBus.Publish(new RewardChangedEvent());
         }
 
-        private void Publish()
+        public void Leave()
         {
-            GameEventBus.Publish(new RewardChangedEvent());
+            var snapshot = new Dictionary<string, RewardCacheData.Entry>(_rewardData.Entries);
+            GameEventBus.Publish(new LeaveConfirmedEvent(snapshot));
+            ResetProgress();
         }
 
         private void OnDestroy()
         {
-            ResetProgress();
+            _rewardData.Reset();
         }
     }
 }

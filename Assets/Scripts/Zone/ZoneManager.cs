@@ -12,6 +12,23 @@ namespace WheelOfFortune.Zone
             ResetProgress();
         }
 
+        private void OnEnable()
+        {
+            GameEventBus.Subscribe<RewardWonEvent>(OnRewardWon);
+            GameEventBus.Subscribe<RestartConfirmedEvent>(OnRestartConfirmed);
+            GameEventBus.Subscribe<LeaveConfirmedEvent>(OnLeaveConfirmed);
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.Unsubscribe<RewardWonEvent>(OnRewardWon);
+            GameEventBus.Unsubscribe<RestartConfirmedEvent>(OnRestartConfirmed);
+            GameEventBus.Unsubscribe<LeaveConfirmedEvent>(OnLeaveConfirmed);
+        }
+        private void OnRewardWon(RewardWonEvent e) => IncrementZone();
+        private void OnRestartConfirmed(RestartConfirmedEvent e) => ResetProgress();
+        private void OnLeaveConfirmed(LeaveConfirmedEvent e) => ResetProgress();
+        
         public void ResetProgress()
         {
             _zoneData.Reset();
@@ -22,27 +39,6 @@ namespace WheelOfFortune.Zone
         {
             _zoneData.IncrementZone();
             GameEventBus.Publish(new ZoneChangedEvent(_zoneData.CurrentZone, _zoneData.CurrentZoneType));
-        }
-        private void OnEnable()
-        {
-            GameEventBus.Subscribe<SpinCompletedEvent>(OnSpinCompleted);
-        }
-
-        private void OnDisable()
-        {
-            GameEventBus.Unsubscribe<SpinCompletedEvent>(OnSpinCompleted);
-        }
-        private void OnSpinCompleted(SpinCompletedEvent e)
-        {
-            if (e.Result.IsBomb) {
-                Debug.Log("Bomb hit! Resetting progress");
-                ResetProgress();
-                //IncrementZone();
-            }
-            else {
-                IncrementZone();
-                Debug.Log($"Spin completed. Going to next zone");
-            }
         }
         private void OnDestroy()
         {
