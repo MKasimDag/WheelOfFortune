@@ -18,3 +18,4 @@ MonoBehaviour:
   _includesBomb: 1
   _bombSlice: {fileID: 11400000, guid: 4a4ec92c952f0e240869dbf2c10d90c9, type: 2}
   _slotCount: 8
+  _zoneHighlightSprite: {fileID: 21300000, guid: d9e9e7a6274f5e94bb153987eaa458d4, type: 3}

@@ -6,6 +6,7 @@ namespace WheelOfFortune.Zone
     public class ZoneBarItemView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI ui_text_zone_value;
+        public RectTransform RectTransform => (RectTransform)transform;
 
         private void OnValidate()
         {
