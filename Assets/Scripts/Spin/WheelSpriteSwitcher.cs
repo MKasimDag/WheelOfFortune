@@ -9,6 +9,7 @@ namespace WheelOfFortune.Spin
     public class WheelSpriteSwitcher : MonoBehaviour
     {
         [SerializeField] private Image _wheelImage;
+        [SerializeField] private Image _wheelWinIndicatorImage;
         [SerializeField] private ZoneData _zoneData;
         [SerializeField] private WheelConfigSet _configSet;
 
@@ -28,6 +29,7 @@ namespace WheelOfFortune.Spin
         private void ApplySprite(ZoneType type)
         {
             _wheelImage.sprite = _configSet.Get(type).WheelSprite;
+            _wheelWinIndicatorImage.sprite = _configSet.Get(type).WheelWinIndicatorSprite;
         }
     }
 }

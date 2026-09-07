@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WheelVisualConfig_Gold
   m_EditorClassIdentifier: 
   _wheelSprite: {fileID: 21300000, guid: 467d866a8d5327d419fa6ecc4ccc7308, type: 3}
+  _wheelWinIndicatorSprite: {fileID: 21300000, guid: 56c9c4608e553844285c03e21b410d3c, type: 3}
   _rewardPool: {fileID: 11400000, guid: a846a4245552c3d438e2aa38b2e2c805, type: 2}
   _includesBomb: 0
   _bombSlice: {fileID: 0}

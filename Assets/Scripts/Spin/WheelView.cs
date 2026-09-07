@@ -9,17 +9,20 @@ namespace WheelOfFortune.Spin
     public class WheelView : MonoBehaviour
     {
         [SerializeField] private Transform _wheelTransform;
-        [SerializeField] private SliceView _slicePrefab;
+        [SerializeField] private Transform _indicatorTransform;
         [SerializeField] private Transform _sliceContainer;
+        [SerializeField] private SliceView _slicePrefab;
         [SerializeField] private float _sliceRadius = 150f;
         [SerializeField] private int _slotCount = 8;
         [SerializeField] private float _spinDuration = 3f;
         [SerializeField] private int _fullTurns = 5;
-
+        [SerializeField] private float _tickAngle = 12f;
+        [SerializeField] private float _tickDuration = 0.06f;
         private readonly List<SliceView> _spawnedSlices = new();
         private bool _isSpinning;
-
         public bool IsSpinning => _isSpinning;
+        private float _lastWheelAngle;
+        private float _accumulatedAngle;
 
         private void Awake()
         {
@@ -59,8 +62,12 @@ namespace WheelOfFortune.Spin
             float anglePerSlice = 360f / _slotCount;
             float targetAngle = (_fullTurns * 360f) - (targetSliceIndex * anglePerSlice);
 
+            _lastWheelAngle = _wheelTransform.localEulerAngles.z;
+            _accumulatedAngle = 0f; 
+
             _wheelTransform.DOLocalRotate(new Vector3(0, 0, -targetAngle), _spinDuration, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuart)
+                .OnUpdate(OnWheelRotationUpdate) 
                 .OnComplete(() =>
                 {
                     _isSpinning = false;
@@ -72,6 +79,29 @@ namespace WheelOfFortune.Spin
         {
             float angle = index * (360f / _slotCount);
             return Quaternion.Euler(0, 0, -angle);
+        }
+
+        private void OnWheelRotationUpdate()
+        {
+            float currentAngle = _wheelTransform.localEulerAngles.z;
+            float delta = Mathf.Abs(Mathf.DeltaAngle(_lastWheelAngle, currentAngle));
+            _lastWheelAngle = currentAngle;
+
+            _accumulatedAngle += delta;
+            float anglePerSlice = 360f / _slotCount;
+
+            while (_accumulatedAngle >= anglePerSlice)
+            {
+                _accumulatedAngle -= anglePerSlice;
+                TickIndicator();
+            }
+        }
+
+        private void TickIndicator()
+        {
+            _indicatorTransform.DOKill();
+            _indicatorTransform.localRotation = Quaternion.identity;
+            _indicatorTransform.DOPunchRotation(new Vector3(0, 0, _tickAngle), _tickDuration, 1, 0.5f);
         }
 
 #if UNITY_EDITOR
