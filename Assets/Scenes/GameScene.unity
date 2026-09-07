@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1879342}
   - component: {fileID: 1879343}
   m_Layer: 5
-  m_Name: Content
+  m_Name: rewardpanel_content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 118560608}
   - component: {fileID: 118560607}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: bombpopup_restatbutton_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 233413219}
   - component: {fileID: 233413218}
   m_Layer: 5
-  m_Name: Image
+  m_Name: goldpanel_icongold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,6 +411,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233413216}
   m_CullTransparentMesh: 1
+--- !u!1 &239415901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239415902}
+  m_Layer: 0
+  m_Name: ManagersAndControllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &239415902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239415901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1962687016}
+  - {fileID: 1770255427}
+  - {fileID: 1965604692}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239764914
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +457,7 @@ GameObject:
   - component: {fileID: 239764917}
   - component: {fileID: 239764916}
   m_Layer: 5
-  m_Name: WheelWinIndicator
+  m_Name: wheel_winindicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,7 +534,7 @@ GameObject:
   - component: {fileID: 347998490}
   - component: {fileID: 347998489}
   m_Layer: 5
-  m_Name: Button
+  m_Name: collectedpopup_continuebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +554,7 @@ RectTransform:
   m_Children:
   - {fileID: 1744970392}
   m_Father: {fileID: 2131657836}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -621,7 +655,7 @@ GameObject:
   - component: {fileID: 353469762}
   - component: {fileID: 353469761}
   m_Layer: 5
-  m_Name: SafeArea
+  m_Name: zoneinfopanel_safearea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 384872048}
   m_Layer: 5
-  m_Name: ItemContainer
+  m_Name: zonebar_itemcontainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +767,7 @@ GameObject:
   - component: {fileID: 409693475}
   - component: {fileID: 409693476}
   m_Layer: 5
-  m_Name: Viewport
+  m_Name: zonebar_viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,14 +780,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409693474}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 384872048}
-  m_Father: {fileID: 903607441}
-  m_RootOrder: 2
+  m_Father: {fileID: 759800759}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -787,7 +821,7 @@ GameObject:
   - component: {fileID: 486825913}
   - component: {fileID: 486825912}
   m_Layer: 5
-  m_Name: GoldPanel
+  m_Name: goldpanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,7 +1033,7 @@ GameObject:
   - component: {fileID: 589431728}
   - component: {fileID: 589431731}
   m_Layer: 5
-  m_Name: Button
+  m_Name: wheel_spinbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1167,7 @@ GameObject:
   - component: {fileID: 610139524}
   - component: {fileID: 610139523}
   m_Layer: 5
-  m_Name: Image
+  m_Name: zonebar_center_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1292,7 +1326,7 @@ GameObject:
   - component: {fileID: 714639335}
   - component: {fileID: 714639334}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: zoneinfopanel_superarea_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SUPER AREA 5
+  m_text: SUPER AREA 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1365,8 +1399,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1429,7 +1463,7 @@ GameObject:
   - component: {fileID: 759201385}
   - component: {fileID: 759201388}
   m_Layer: 5
-  m_Name: LeaveButton
+  m_Name: rewardpanel_leavebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1565,7 +1599,7 @@ GameObject:
   - component: {fileID: 759800761}
   - component: {fileID: 759800760}
   m_Layer: 5
-  m_Name: Image
+  m_Name: zonebar_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1582,7 +1616,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 409693475}
   m_Father: {fileID: 903607441}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1642,7 +1677,7 @@ GameObject:
   - component: {fileID: 781556685}
   - component: {fileID: 781556688}
   m_Layer: 5
-  m_Name: WheelView
+  m_Name: wheel_view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,7 +1770,7 @@ GameObject:
   - component: {fileID: 903607443}
   - component: {fileID: 903607442}
   m_Layer: 5
-  m_Name: ZoneBar
+  m_Name: zonebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,7 +1790,6 @@ RectTransform:
   m_Children:
   - {fileID: 759800759}
   - {fileID: 610139522}
-  - {fileID: 409693475}
   m_Father: {fileID: 1142325449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1839,7 +1873,7 @@ GameObject:
   - component: {fileID: 917340774}
   - component: {fileID: 917340773}
   m_Layer: 5
-  m_Name: SuperArea
+  m_Name: zoneinfopanel_superarea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1915,7 +1949,7 @@ GameObject:
   - component: {fileID: 1021680660}
   - component: {fileID: 1021680661}
   m_Layer: 5
-  m_Name: RewardPoint
+  m_Name: wheel_rewardpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2064,7 +2098,7 @@ RectTransform:
   - {fileID: 486825911}
   - {fileID: 2069399519}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2083,7 +2117,7 @@ GameObject:
   - component: {fileID: 1188241490}
   - component: {fileID: 1188241489}
   m_Layer: 5
-  m_Name: Image
+  m_Name: zonebar_center_indicator_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2160,7 +2194,7 @@ GameObject:
   - component: {fileID: 1232326568}
   - component: {fileID: 1232326567}
   m_Layer: 5
-  m_Name: Viewport
+  m_Name: rewardpanel_viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2252,7 +2286,7 @@ GameObject:
   - component: {fileID: 1233994225}
   - component: {fileID: 1233994227}
   m_Layer: 5
-  m_Name: BombPopup
+  m_Name: bombpopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2361,7 +2395,7 @@ GameObject:
   - component: {fileID: 1445248068}
   - component: {fileID: 1445248066}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: rewardpanel_scroolview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2438,7 +2472,7 @@ GameObject:
   - component: {fileID: 1507665577}
   - component: {fileID: 1507665576}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: bombpopup_revivebutton_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2574,7 +2608,7 @@ GameObject:
   - component: {fileID: 1690360239}
   - component: {fileID: 1690360241}
   m_Layer: 5
-  m_Name: RewardPanel
+  m_Name: rewardpanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,6 +2628,7 @@ RectTransform:
   m_Children:
   - {fileID: 1445248065}
   - {fileID: 759201384}
+  - {fileID: 2008832531}
   m_Father: {fileID: 1142325449}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2802,7 +2837,7 @@ GameObject:
   - component: {fileID: 1744970394}
   - component: {fileID: 1744970393}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: collectedpopup_continuebutton_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2848,7 +2883,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2937,7 +2972,7 @@ GameObject:
   - component: {fileID: 1768868012}
   - component: {fileID: 1768868011}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: goldpanel_currencytext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3100,12 +3135,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770255425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 454.07996, y: 184.36813, z: -0.19168656}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 239415902}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774166018
 GameObject:
@@ -3118,7 +3153,7 @@ GameObject:
   - component: {fileID: 1774166019}
   - component: {fileID: 1774166020}
   m_Layer: 5
-  m_Name: Wheel
+  m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3182,7 +3217,7 @@ GameObject:
   - component: {fileID: 1887474204}
   - component: {fileID: 1887474203}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: zoneinfopanel_safearea_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3255,8 +3290,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3315,7 +3350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892855896}
   m_Layer: 5
-  m_Name: FxLayer
+  m_Name: fxLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3354,7 +3389,7 @@ GameObject:
   - component: {fileID: 1942502741}
   - component: {fileID: 1942502740}
   m_Layer: 5
-  m_Name: ReviveButton
+  m_Name: bombpopup_revivebutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3505,8 +3540,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 239415902}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965604690
 GameObject:
@@ -3548,12 +3583,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965604690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 362.1405, y: 308.4635, z: -0.8495149}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 239415902}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2008832530
 GameObject:
@@ -3565,7 +3600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2008832531}
   m_Layer: 5
-  m_Name: TargetPoint
+  m_Name: rewardpanel_targetpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3583,12 +3618,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2131657836}
-  m_RootOrder: 0
+  m_Father: {fileID: 1690360238}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -720, y: 154}
+  m_AnchoredPosition: {x: -10, y: 204.00002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2035055288
@@ -3657,7 +3692,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2068634206
 GameObject:
@@ -3671,7 +3706,7 @@ GameObject:
   - component: {fileID: 2068634209}
   - component: {fileID: 2068634208}
   m_Layer: 5
-  m_Name: InfoText
+  m_Name: bombpopup_infotext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3806,7 +3841,7 @@ GameObject:
   - component: {fileID: 2069399521}
   - component: {fileID: 2069399520}
   m_Layer: 5
-  m_Name: ZoneInfoPanel
+  m_Name: zoneinfopanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3881,7 +3916,7 @@ GameObject:
   - component: {fileID: 2078523142}
   - component: {fileID: 2078523141}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: bombpopup_restartbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4002,7 +4037,7 @@ GameObject:
   - component: {fileID: 2095867788}
   - component: {fileID: 2095867787}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bombpopup_icondeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4080,7 +4115,7 @@ GameObject:
   - component: {fileID: 2131657837}
   - component: {fileID: 2131657840}
   m_Layer: 5
-  m_Name: CollectedPopup
+  m_Name: collectedpopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4098,7 +4133,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2008832531}
   - {fileID: 347998488}
   m_Father: {fileID: 1142325449}
   m_RootOrder: 4
@@ -4168,7 +4202,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131657835}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
